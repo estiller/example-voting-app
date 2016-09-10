@@ -2,7 +2,7 @@ version: "2"
 
 services:
   vote:
-    image: stiller/examplevotingapp_vote:v1
+    image: stiller/examplevotingapp_vote:v2
     command: python app.py
     ports:
       - "80:80"
@@ -12,13 +12,13 @@ services:
     ports: ["6379"]
 
   worker:
-    image: stiller/examplevotingapp_worker:v1
+    image: stiller/examplevotingapp_worker:v2
 
   db:
     image: postgres:9.4
 
   result:
-    image: stiller/examplevotingapp_result:v1
+    image: stiller/examplevotingapp_result:v2
     command: nodemon --debug server.js
     ports:
       - "8080:80"
