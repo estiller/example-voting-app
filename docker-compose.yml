@@ -2,24 +2,24 @@ version: "2"
 
 services:
   vote:
-    build: ./vote
+    image: stiller/examplevotingapp_vote:v1
     command: python app.py
     ports:
-      - "5000:80"
+      - "80:80"
 
   redis:
     image: redis:alpine
     ports: ["6379"]
 
   worker:
-    build: ./worker
+    image: stiller/examplevotingapp_worker:v1
 
   db:
     image: postgres:9.4
 
   result:
-    build: ./result
+    image: stiller/examplevotingapp_result:v1
     command: nodemon --debug server.js
     ports:
-      - "5001:80"
+      - "8080:80"
       - "5858:5858"
